@@ -1,0 +1,90 @@
+<div class="main">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span>Music-project</span>
+      <span class="example-spacer"></span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+
+<div class="back-button">
+  <button mat-icon-button routerLink="/track">
+    <mat-icon [inline]="true">keyboard_backspace</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="tracks$ | async as tracks">
+  <mat-card class="track-card">
+    <mat-card-title-group>
+      <img
+        mat-card-lg-image
+        [src]="'http://localhost:5001/' + tracks.pictureSrc"
+      />
+      <mat-card-title>Название трека - {{ tracks.name }}</mat-card-title>
+      <mat-card-title class="sec"
+        >Исполнитель - {{ tracks.artist }}</mat-card-title
+      >
+    </mat-card-title-group>
+    <mat-card-title class="thir">Слова в треке</mat-card-title>
+    <mat-card-content style="color: rgb(255, 251, 0)">
+      {{ tracks.text }}
+    </mat-card-content>
+
+    <!-- <form #createForm="ngForm"> -->
+    <mat-card-title class="thir">Комментарии</mat-card-title>
+    <div>
+      <div class="form-group">
+        <mat-form-field class="name">
+          <mat-label>Ваше имя</mat-label>
+          <input
+            matInput
+            class="form-control"
+            type="text"
+            name="username"
+            [(ngModel)]="newCommentModel.username"
+          />
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="comment">
+          <mat-label>Комментарий</mat-label>
+          <input
+            matInput
+            class="form-control"
+            type="text"
+            name="text"
+            [(ngModel)]="newCommentModel.text"
+          />
+        </mat-form-field>
+      </div>
+
+      <div mat-dialog-actions class="send-button">
+        <button
+          style="
+            font-size: 20px;
+            margin-top: 10px;
+            background-color: rgb(255, 251, 0);
+          "
+          type="button"
+          mat-button
+          (click)="addComment(id_page)"
+        >
+          Отправить
+        </button>
+      </div>
+    </div>
+    <!-- </form> -->
+  </mat-card>
+
+  <div>
+    <mat-nav-list *ngFor="let comments of comment | async" class="comment-list">
+      <mat-list role="comment-list">
+        <mat-list-item role="listItem"
+          >Автор - {{ comments.username }}<br />
+          Комментарий - {{ comments.text }}</mat-list-item
+        >
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-nav-list>
+  </div>
+</div>

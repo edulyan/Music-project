@@ -1,0 +1,115 @@
+::ng-deep mat-slider {
+  width: 100%;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgb(255, 251, 0) !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: rgb(255, 251, 0) !important;
+}
+
+.form-group {
+  .search {
+    margin-left: 410px;
+    width: 1000px;
+    font-size: 25px;
+  }
+}
+
+.add-button {
+  .mat-icon-button {
+    margin: 10px;
+    font-size: 50px;
+    background-color: rgb(68, 66, 66);
+    color: rgb(255, 251, 0);
+  }
+}
+
+.main {
+  .mat-toolbar {
+    background-color: black;
+    color: rgb(255, 251, 0);
+  }
+}
+
+.item-list {
+  .icon-music {
+    margin-right: 15px;
+  }
+
+  .icon-delete {
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 430px;
+  }
+
+  .icon-comment {
+    position: absolute;
+    top: 75px;
+    right: 13px;
+  }
+
+  .mat-card-image {
+    width: 190px;
+    height: 130px;
+    border-radius: 10%;
+    margin-right: 18px;
+  }
+
+  // .mati-list-item {
+  // }
+}
+
+.mat-nav-list {
+  // background-color: rgb(27, 25, 25);
+  background-color: rgb(68, 66, 66);
+  .btn-name {
+    background-color: rgb(255, 251, 0);
+    color: rgb(0, 0, 0);
+  }
+}
+
+.mat-divider {
+  border-top-width: 1.5px;
+  border-top-color: black;
+}
+
+.media-footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+
+  .mat-toolbar {
+    background-color: rgb(68, 66, 66);
+  }
+
+  .media-text-center {
+    padding: 2.5rem;
+    justify-content: center;
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+  }
+
+  .volume-slider {
+    position: absolute;
+    right: 150px;
+    width: 170px;
+  }
+
+  .media-slider-center {
+    padding: 2.5rem;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+  }
+
+  .mat-icon {
+    color: rgb(255, 255, 255);
+    height: 48px;
+    width: 48px;
+    font-size: 48px;
+  }
+}

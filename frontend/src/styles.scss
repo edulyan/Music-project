@@ -1,0 +1,12 @@
+@import "~bootstrap/dist/css/bootstrap-grid.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+  height: 100%;
+  background-color: rgb(68, 66, 66);
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

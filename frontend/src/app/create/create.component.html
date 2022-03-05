@@ -1,0 +1,85 @@
+<h1 mat-dialog-title>Add New Track</h1>
+<form #createForm="ngForm">
+  <div class="container-fluid" mat-dialog-content>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field class="w-200">
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="newTrackModel.name"
+            matInput
+            placeholder="Name"
+            required
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-6">
+        <mat-form-field class="w=200">
+          <input
+            type="text"
+            name="artist"
+            [(ngModel)]="newTrackModel.artist"
+            matInput
+            placeholder="Artist"
+            required
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-6">
+        <mat-form-field class="w=200">
+          <input
+            type="text"
+            name="text"
+            [(ngModel)]="newTrackModel.text"
+            matInput
+            placeholder="Text"
+            required
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-6">
+        <mat-form-field class="w=200">
+          <ngx-mat-file-input
+            name="pictureSrc"
+            [(ngModel)]="newTrackModel.pictureSrc"
+            accept=".png, .jpg, .jpeg"
+            matInput
+            placeholder="Picture"
+          >
+          </ngx-mat-file-input>
+        </mat-form-field>
+      </div>
+
+      <div class="col-6">
+        <mat-form-field class="w=200">
+          <ngx-mat-file-input
+            name="audioSrc"
+            [(ngModel)]="newTrackModel.audioSrc"
+            accept=".mp3"
+            placeholder="Audio"
+          >
+          </ngx-mat-file-input>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-button
+      type="button"
+      (click)="create(createForm)"
+      [disabled]="!createForm.valid"
+      color="primary"
+    >
+      Create
+    </button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </div>
+  <mat-dialog-actions>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </mat-dialog-actions>
+</form>

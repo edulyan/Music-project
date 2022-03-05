@@ -1,0 +1,114 @@
+<div>
+  <div *ngIf="getTrack() | async as trackListItem">
+    <div class="main">
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span>Music-project</span>
+          <span class="example-spacer"></span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+
+    <div class="add-button">
+      <button mat-icon-button (click)="create()">
+        <mat-icon [inline]="true">add_box</mat-icon>
+      </button>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="search">
+        <mat-label>Search</mat-label>
+        <input
+          matInput
+          [ngModel]="tracks.name"
+          (ngModelChange)="searchTrack($event)"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="item-list">
+      <mat-nav-list>
+        <mat-list-item
+          style="
+            margin-left: 650px;
+            font-size: 18px;
+            height: 300px;
+            width: 500px;
+          "
+          *ngFor="let track of trackListItem"
+          (click)="play(track)"
+        >
+          <mat-icon class="icon-music">music_note</mat-icon>
+          <img
+            mat-card-image
+            [src]="'http://localhost:5001/' + track.pictureSrc"
+          />
+          {{ track.name }} <br />
+          {{ track.artist }}
+          <div class="icon-delete">
+            <button
+              mat-icon-button
+              (click)="delete(track); $event.stopPropagation()"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <div class="icon-comment">
+            <button mat-icon-button [routerLink]="['/track/', track.id]">
+              <mat-icon>add_comment</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </div>
+
+  <div class="media-footer">
+    <mat-toolbar *ngIf="activeTrack">
+      <mat-toolbar-row class="media-text-center">
+        {{ activeTrack.name }}
+      </mat-toolbar-row>
+
+      <mat-toolbar-row class="media-slider-center">
+        <mat-slider
+          #range
+          color="warn"
+          class="time-slider"
+          min="progress"
+          [max]="100"
+          (touched)="seek()"
+          (mouseup)="seek()"
+          [(ngModel)]="progress"
+        ></mat-slider>
+      </mat-toolbar-row>
+
+      <mat-toolbar-row class="media-text-center">
+        <button mat-button fill="clear" (click)="prev()">
+          <mat-icon>fast_rewind</mat-icon>
+        </button>
+
+        <button
+          mat-button
+          fill="clear"
+          (click)="togglePLayer(false)"
+          *ngIf="!isPlaying"
+        >
+          <mat-icon>play_circle_filled</mat-icon>
+        </button>
+
+        <button
+          mat-button
+          fill="clear"
+          (click)="togglePLayer(true)"
+          *ngIf="isPlaying"
+        >
+          <mat-icon>pause_circle_filled</mat-icon>
+        </button>
+
+        <button mat-button fill="clear" (click)="next()">
+          <mat-icon>fast_forward</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+</div>
